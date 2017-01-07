@@ -12,8 +12,8 @@ use Mix.Config
 # import_config "#{Mix.Project.config[:target]}.exs"
 
 config :washer_dryer, :ldrs, [
-  %{ name: 'dryer', gpio_pin: 17, threshold: 23000 },
-  %{ name: 'washer', gpio_pin: 18, threshold: 23000 }
+  %{ name: 'dryer', gpio_pin: 27, threshold: 23000 },
+  %{ name: 'washer', gpio_pin: 22, threshold: 23000 }
 ]
 
-config :washer_dryer, :heartbeat_led, %{ gpio_pin: 4 }
+config :washer_dryer, :heartbeat_led, %{ gpio_pin: 24 }
