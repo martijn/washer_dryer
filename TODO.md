@@ -1,0 +1,5 @@
+- [ ] Hook up networking
+- [ ] Actually do something when an LDR is light for more than 10 seconds
+- [ ] Hook up Wi-Fi
+- [ ] Convert into a proper OTP application
+- [ ] Use more idiomatic Elixir
