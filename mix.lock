@@ -1,4 +1,6 @@
-%{"distillery": {:hex, :distillery, "1.0.0", "a866a72bf2a3a5f078f5a249017ed951acda88a760d200512f91f585d74db1ec", [:mix], []},
+%{"bunt": {:hex, :bunt, "0.1.6", "5d95a6882f73f3b9969fdfd1953798046664e6f77ec4e486e6fafc7caad97c6f", [:mix], []},
+  "credo": {:hex, :credo, "0.5.3", "0c405b36e7651245a8ed63c09e2d52c2e2b89b6d02b1570c4d611e0fcbecf4a2", [:mix], [{:bunt, "~> 0.1.6", [hex: :bunt, optional: false]}]},
+  "distillery": {:hex, :distillery, "1.0.0", "a866a72bf2a3a5f078f5a249017ed951acda88a760d200512f91f585d74db1ec", [:mix], []},
   "elixir_ale": {:hex, :elixir_ale, "0.5.6", "a94c89a17ec39ad4c4a9a90d4f00bd9f33b2f2e98703317fbdf5efceab276b44", [:make, :mix], [{:elixir_make, "~> 0.3", [hex: :elixir_make, optional: false]}]},
   "elixir_make": {:hex, :elixir_make, "0.4.0", "992f38fabe705bb45821a728f20914c554b276838433349d4f2341f7a687cddf", [:mix], []},
   "nerves": {:hex, :nerves, "0.4.4", "6574a710d653c14a37e3383d02419f5a9ad2e65b2de9ad524f4eae2015d8aee6", [:mix], [{:distillery, "~> 1.0.0", [hex: :distillery, optional: false]}]},

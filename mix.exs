@@ -26,7 +26,8 @@ defmodule WasherDryer.Mixfile do
 
   def deps do
     [{:nerves, "~> 0.4.0"},
-     {:elixir_ale, "~> 0.5.6"}]
+     {:elixir_ale, "~> 0.5.6"},
+     {:credo, "~> 0.5", only: [:dev, :test]}]
   end
 
   def system(target) do
