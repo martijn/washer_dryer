@@ -9,28 +9,33 @@ defmodule WasherDryer.LdrWatcher do
   import :timer, only: [sleep: 1, tc: 2]
 
   @interval 1000
+  @ldrs Application.get_env(:washer_dryer, :ldrs)
 
   # External API
 
-  def start_link(ldr) do
-    GenServer.start_link(__MODULE__, ldr)
+  def start_link() do
+    GenServer.start_link(__MODULE__, nil, name: __MODULE__)
   end
 
   # GenServer implementation
 
-  def init(ldr) do
-    Process.send_after(self(), :poll_gpio, @interval)
-    {:ok, ldr}
+  def init(state) do
+    # Trigger initial polling for every configured LDR
+    Enum.each @ldrs, fn ldr ->
+      Process.send_after(self(), {:poll_gpio, ldr}, @interval)
+    end
+
+    {:ok, state}
   end
 
-  def handle_info(:poll_gpio, ldr) do
+  def handle_info({:poll_gpio, ldr}, state) do
     discharge_cap(ldr[:gpio_pin])
     {time, :ok} = tc(WasherDryer, fn -> wait_for_rise(ldr[:gpio_pin]) end)
 
     if time < ldr[:threshold], do: Main.ldr_lit(ldr, time)
 
-    Process.send_after(self(), :poll_gpio, @interval)
-    {:noreply, ldr}
+    Process.send_after(self(), {:poll_gpio, ldr}, @interval)
+    {:noreply, state}
   end
 
   # Private methods

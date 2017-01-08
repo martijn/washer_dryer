@@ -12,11 +12,10 @@ defmodule WasherDryer do
 
     # Define workers and child supervisors to be supervised
     children = [
-      worker(WasherDryer.Main, []),
-      worker(WasherDryer.Heartbeat, [])
-    ] ++ Enum.map Application.get_env(:washer_dryer, :ldrs), fn ldr ->
-      worker(WasherDryer.LdrWatcher, [ldr], id: "LdrWatcher-#{ldr[:name]}")
-    end
+      worker(WasherDryer.Heartbeat, []),
+      worker(WasherDryer.LdrWatcher, []),
+      worker(WasherDryer.Main, [])
+    ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
