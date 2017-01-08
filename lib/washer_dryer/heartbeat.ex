@@ -20,14 +20,14 @@ defmodule WasherDryer.Heartbeat do
 
   def init(gpio_pin) do
     {:ok, gpio} = Gpio.start_link(gpio_pin, :output)
-    Process.send_after(self(), {:toggle, 1}, @interval)
-    {:ok, gpio}
+    Process.send_after(self(), :toggle, @interval)
+    {:ok, {gpio, 1}}
   end
 
-  def handle_info({:toggle, value}, gpio) do
+  def handle_info(:toggle, {gpio, value}) do
     Gpio.write(gpio, value)
-    Process.send_after(self(), {:toggle, value ^^^ 1}, @interval)
+    Process.send_after(self(), :toggle, @interval)
 
-    {:noreply, gpio}
+    {:noreply, {gpio, value ^^^ 1}}
   end
 end
