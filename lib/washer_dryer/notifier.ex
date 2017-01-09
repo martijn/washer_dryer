@@ -45,7 +45,7 @@ defmodule WasherDryer.Notifier do
     Logger.info("Sending notification for #{ldr[:name]}")
 
     HTTPotion.post "https://api.pushover.net/1/messages.json", [
-      body: "token=#{@pushover_config[:token]}&user=#{@pushover_config[:user]}&title=" <> URI.encode_www_form("#{ldr[:name]} is finished!") <> "&message=" <> URI.encode_www_form(":)"),
+      body: "token=#{@pushover_config[:token]}&user=#{@pushover_config[:user]}&title=" <> URI.encode_www_form(ldr[:message_title]) <> "&message=" <> URI.encode_www_form(ldr[:message_body]),
       headers: ["Content-Type": "application/x-www-form-urlencoded"]
     ]
   end
