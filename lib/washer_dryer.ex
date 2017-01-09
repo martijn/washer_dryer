@@ -13,8 +13,8 @@ defmodule WasherDryer do
     # Define workers and child supervisors to be supervised
     children = [
       worker(WasherDryer.Heartbeat, []),
-      worker(WasherDryer.LdrWatcher, []),
-      worker(WasherDryer.Main, [])
+      worker(WasherDryer.Notifier, []),
+      worker(WasherDryer.LdrWatcher, [])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

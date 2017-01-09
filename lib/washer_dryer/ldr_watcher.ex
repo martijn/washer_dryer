@@ -5,7 +5,7 @@ defmodule WasherDryer.LdrWatcher do
 
   use GenServer
 
-  alias WasherDryer.Main
+  alias WasherDryer.Notifier
   import :timer, only: [sleep: 1, tc: 1]
 
   @interval 1000
@@ -32,7 +32,11 @@ defmodule WasherDryer.LdrWatcher do
     discharge_cap(ldr[:gpio_pin])
     {time, :ok} = tc(fn -> wait_for_rise(ldr[:gpio_pin]) end)
 
-    if time < ldr[:threshold], do: Main.ldr_lit(ldr, time)
+    if time < ldr[:threshold] do
+      Notifier.ldr_light(ldr, time)
+    else
+      Notifier.ldr_dark(ldr)
+    end
 
     Process.send_after(self(), {:poll_gpio, ldr}, @interval)
     {:noreply, state}
