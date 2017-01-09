@@ -10,3 +10,7 @@
 
 # Generate on crash by the VM
 erl_crash.dump
+
+# Configs we don't want on Github
+config/dev.exs
+config/prod.exs

@@ -34,3 +34,5 @@ config :washer_dryer, :pushover, %{
   token: "<your pushover token>",
   user: "<your pushover user>"
 }
+
+import_config "#{Mix.env}.exs"
