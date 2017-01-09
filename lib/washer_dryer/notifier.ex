@@ -8,6 +8,8 @@ defmodule WasherDryer.Notifier do
 
   require Logger
 
+  @pushover_config Application.get_env(:washer_dryer, :pushover)
+
   # External API
 
   def start_link do
@@ -41,6 +43,11 @@ defmodule WasherDryer.Notifier do
 
   defp send_notification(ldr) do
     Logger.info("Sending notification for #{ldr[:name]}")
+
+    HTTPotion.post "https://api.pushover.net/1/messages.json", [
+      body: "token=#{@pushover_config[:token]}&user=#{@pushover_config[:user]}&title=" <> URI.encode_www_form("#{ldr[:name]} is finished!") <> "&message=" <> URI.encode_www_form(":)"),
+      headers: ["Content-Type": "application/x-www-form-urlencoded"]
+    ]
   end
 
 

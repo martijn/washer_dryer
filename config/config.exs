@@ -12,8 +12,13 @@ use Mix.Config
 # import_config "#{Mix.Project.config[:target]}.exs"
 
 config :washer_dryer, :ldrs, [
-  %{ name: 'dryer', gpio_pin: 27, threshold: 23000 },
-  %{ name: 'washer', gpio_pin: 22, threshold: 23000 }
+  %{ name: 'Dryer', gpio_pin: 27, threshold: 23000 },
+  %{ name: 'Washer', gpio_pin: 22, threshold: 23000 }
 ]
 
 config :washer_dryer, :heartbeat_led, %{ gpio_pin: 24 }
+
+config :washer_dryer, :pushover, %{
+  token: "<your pushover token>",
+  user: "<your pushover user>"
+}

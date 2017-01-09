@@ -21,12 +21,13 @@ defmodule WasherDryer.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {WasherDryer, []},
-     applications: [:logger, :elixir_ale]]
+     applications: [:elixir_ale, :httpotion, :logger]]
   end
 
   def deps do
     [{:nerves, "~> 0.4.0"},
      {:elixir_ale, "~> 0.5.6"},
+     {:httpotion, "~> 3.0.2"},
      {:credo, "~> 0.5", only: [:dev, :test]}]
   end
 
