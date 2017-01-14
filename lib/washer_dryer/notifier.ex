@@ -32,7 +32,7 @@ defmodule WasherDryer.Notifier do
     # Trigger notification after receiving three notifications in a row
     if counters[ldr[:name]] == 2, do: send_notification(ldr)
 
-    {:noreply, Map.update(counters, ldr[:name], 1, &(&1+1))}
+    {:noreply, Map.update(counters, ldr[:name], 1, &(&1 + 1))}
   end
 
   def handle_cast({:ldr_dark, ldr}, counters) do
