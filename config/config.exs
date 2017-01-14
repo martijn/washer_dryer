@@ -28,11 +28,17 @@ config :washer_dryer, :ldrs, [
   }
 ]
 
-config :washer_dryer, :heartbeat_led, %{ gpio_pin: 24 }
+config :washer_dryer, :heartbeat_led, gpio_pin: 24
 
-config :washer_dryer, :pushover, %{
+config :washer_dryer, :pushover,
   token: "<your pushover token>",
   user: "<your pushover user>"
-}
+
+config :washer_dryer, :wifi,
+  ssid: "my_accesspoint_name",
+  key_mgmt: :"WPA-PSK",
+  psk: "secretsecret"
+
+config :nerves_interim_wifi, regulatory_domain: "NL"
 
 import_config "#{Mix.env}.exs"

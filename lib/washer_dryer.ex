@@ -17,6 +17,8 @@ defmodule WasherDryer do
       worker(WasherDryer.LdrWatcher, [])
     ]
 
+    Nerves.InterimWiFi.setup "wlan0", Application.get_env(:washer_dryer, :wifi)
+
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: WasherDryer.Supervisor]
