@@ -1,6 +1,6 @@
 # WasherDryer
 
-This [http://nerves-project.org](Nerves) project aims to notify me when my
+This [Nerves](http://nerves-project.org) project aims to notify me when my
 washer or dryer finished it's cycle. The hardware contraption that goes with it
 is looks as follows:
 
