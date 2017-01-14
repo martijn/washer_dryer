@@ -1,16 +1,16 @@
 # WasherDryer
 
-This project aims to notify me when my washer or dryer finished it's cycle. The
-hardware contraption that goes with it is illustrated in this tweet:
+This [http://nerves-project.org](Nerves) project aims to notify me when my
+washer or dryer finished it's cycle. The hardware contraption that goes with it
+is looks as follows:
 
-    https://twitter.com/martijnstorck/status/561631901392592897
+![Accompanying hardware](https://www.martijnstorck.nl/stuff/washer-dryer.jpg)
 
 Basically it's two circuits of 200K LDR's and 1uF capacitors. We discharge the
 capacitor by pulling the GPIO pin low, then wait for it to charge again. The
 faster the GPIO pin rises, the more light is sensed by the LDR.
 
-This is a rewrite of my original hacked together Python script and is a work
-in progress.
+It sends notifications to my phone using [Pushover](https://pushover.net).
 
 To compile the app (default target is rpi):
 

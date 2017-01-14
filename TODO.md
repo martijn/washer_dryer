@@ -1,5 +1,1 @@
-- [ ] Hook up networking
-- [ ] Actually do something when an LDR is light for more than 10 seconds
-- [ ] Hook up Wi-Fi
-- [ ] Convert into a proper OTP application
-- [ ] Use more idiomatic Elixir
+- [ ] Implement [nerves_firmware_http](https://github.com/nerves-project/nerves_firmware_http)
