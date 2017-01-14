@@ -11,6 +11,8 @@ use Mix.Config
 
 # import_config "#{Mix.Project.config[:target]}.exs"
 
+config :nerves, :firmware, rootfs_additions: "config/rootfs-additions"
+
 config :washer_dryer, :ldrs, [
   %{
     name: 'Dryer',
